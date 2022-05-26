@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
 function App() {
+
+  const [color, setColor ] = useState("#FFFFFF");
+
+  let changeColor = ({ value }) => {
+    setColor(value);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className="container">
+        <header className="App-header">
+        <h1>React Colors</h1>
+        <p>Enter a hex code in the input form below to color the box!</p>
+        <main>
+          <form>
+              <input type="text" value={color} onChange={changeColor} placeholder="#FFFFFF" minlength="3" maxlength="7" />
+          </form>
+          <p>{color}</p>
+        <div className="colored" style={{ backgroundColor: color }}></div>
+        </main>
       </header>
+      </div>
     </div>
   );
 }
