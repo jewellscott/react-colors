@@ -4,8 +4,9 @@ function App() {
 
   const [color, setColor ] = useState("#FFFFFF");
 
-  let changeColor = ({ value }) => {
-    setColor(value);
+  let changeColor = (e) => {
+    console.log(color);
+    setColor(`#${+e.target.value}`);
   }
 
   return (
@@ -16,7 +17,7 @@ function App() {
         <p>Enter a hex code in the input form below to color the box!</p>
         <main>
           <form>
-              <input type="text" value={color} onChange={changeColor} placeholder="#FFFFFF" minlength="3" maxlength="7" />
+              <input type="text" value={color}  onChange={changeColor} placeholder="#FFFFFF" minLength="3" maxLength="7" />
           </form>
           <p>{color}</p>
         <div className="colored" style={{ backgroundColor: color }}></div>
